@@ -47,7 +47,9 @@ jobs:
             mesa-vulkan-drivers \
             libshaderc-dev \
             libjpeg-dev \
-            libpng-dev
+            libpng-dev \
+            libtiff-dev \
+            libfreetype-dev
 
       - name: Download Goo Engine libraries
         run: make update
