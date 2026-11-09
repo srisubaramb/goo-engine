@@ -24,7 +24,8 @@ jobs:
           sudo add-apt-repository -y ppa:deadsnakes/ppa
           sudo apt-get update
           
-          # Install core system tools needed to bootstrap the installer script
+          # Force install all required baseline development packages manually 
+          # to ensure CMake doesn't throw "Could NOT find" errors.
           sudo apt-get install -y \
             build-essential \
             git \
@@ -34,15 +35,61 @@ jobs:
             ninja-build \
             python3 \
             python3.11 \
-            python3.11-dev
+            python3.11-dev \
+            libx11-dev \
+            libxxf86vm-dev \
+            libxcursor-dev \
+            libxi-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libegl-dev \
+            libwayland-dev \
+            wayland-protocols \
+            libxkbcommon-dev \
+            libdbus-1-dev \
+            libsm-dev \
+            libgl1-mesa-dev \
+            libglu1-mesa-dev \
+            libepoxy-dev \
+            libvulkan-dev \
+            mesa-vulkan-drivers \
+            libshaderc-dev \
+            libjpeg-dev \
+            libpng-dev \
+            libtiff-dev \
+            libfreetype-dev \
+            libopenimageio-dev \
+            libopencolorio-dev \
+            libopenexr-dev \
+            libopenjp2-7-dev \
+            libwebp-dev \
+            libboost-all-dev \
+            libtbb-dev \
+            libopenal-dev \
+            libsdl2-dev \
+            libsndfile1-dev \
+            libavformat-dev \
+            libavcodec-dev \
+            libavdevice-dev \
+            libavfilter-dev \
+            libavutil-dev \
+            libswscale-dev \
+            libswresample-dev \
+            libfftw3-dev \
+            libpugixml-dev \
+            libgmp-dev \
+            libgmpxx4ldbl \
+            libembree-dev \
+            libopenxr-dev \
+            libpotrace-dev
 
-          # Run the engine's native setup script to automatically map all Linux package variations
+          # Run the engine package script with a non-interactive flag to safely capture edge-case dependencies
           chmod +x ./build_files/build_environment/install_linux_packages.py
-          sudo ./build_files/build_environment/install_linux_packages.py
+          sudo ./build_files/build_environment/install_linux_packages.py --y
 
       - name: Download Goo Engine libraries
         run: |
-          # Pull down the precompiled platform libraries required by the CMake architecture
+          # Use explicit python update mapping to ensure the SVN libraries directory structures are prepared
           python3 ./build_files/utils/make_update.py
 
       - name: Compile Goo Engine
