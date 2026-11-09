@@ -57,8 +57,10 @@ jobs:
             libtiff-dev \
             libfreetype-dev \
             libopenimageio-dev \
+            libopencolorio-dev \
             libopenexr-dev \
             libopenjp2-7-dev \
+            libwebp-dev \
             libboost-all-dev \
             libtbb-dev \
             libopenal-dev \
@@ -72,7 +74,9 @@ jobs:
             libswscale-dev \
             libswresample-dev \
             libfftw3-dev \
-            libpugixml-dev
+            libpugixml-dev \
+            libgmp-dev \
+            libgmpxx4ldbl
 
       - name: Download Goo Engine libraries
         run: make update
