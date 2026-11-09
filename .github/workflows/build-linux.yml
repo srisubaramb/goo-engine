@@ -41,7 +41,8 @@ jobs:
             libdbus-1-dev \
             libsm-dev \
             libgl1-mesa-dev \
-            libglu1-mesa-dev
+            libglu1-mesa-dev \
+            libepoxy-dev
 
       - name: Download Goo Engine libraries
         run: make update
