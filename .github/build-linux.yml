@@ -1,0 +1,50 @@
+
+name: Build Goo Engine Linux
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            git \
+            git-lfs \
+            subversion \
+            cmake \
+            python3
+
+          sudo python3 ./build_files/linux/install_linux_packages.py
+
+      - name: Download Goo Engine libraries
+        run: make update
+
+      - name: Compile Goo Engine
+        run: make NPROCS=2
+
+      - name: Package Linux build
+        run: |
+          tar -czf goo-engine-linux.tar.gz \
+            -C ../build_linux/bin .
+
+      - name: Upload Linux executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: goo-engine-linux
+          path: goo-engine-linux.tar.gz
+          retention-days: 7
