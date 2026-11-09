@@ -55,7 +55,24 @@ jobs:
             libjpeg-dev \
             libpng-dev \
             libtiff-dev \
-            libfreetype-dev
+            libfreetype-dev \
+            libopenimageio-dev \
+            libopenexr-dev \
+            libopenjp2-7-dev \
+            libboost-all-dev \
+            libtbb-dev \
+            libopenal-dev \
+            libsdl2-dev \
+            libsndfile1-dev \
+            libavformat-dev \
+            libavcodec-dev \
+            libavdevice-dev \
+            libavfilter-dev \
+            libavutil-dev \
+            libswscale-dev \
+            libswresample-dev \
+            libfftw3-dev \
+            libpugixml-dev
 
       - name: Download Goo Engine libraries
         run: make update
