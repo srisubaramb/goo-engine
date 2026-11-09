@@ -42,7 +42,10 @@ jobs:
             libsm-dev \
             libgl1-mesa-dev \
             libglu1-mesa-dev \
-            libepoxy-dev
+            libepoxy-dev \
+            libvulkan-dev \
+            libshaderc-dev \
+            mesa-vulkan-drivers
 
       - name: Download Goo Engine libraries
         run: make update
