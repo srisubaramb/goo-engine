@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
 
     steps:
@@ -44,7 +44,8 @@ jobs:
             libglu1-mesa-dev \
             libepoxy-dev \
             libvulkan-dev \
-            mesa-vulkan-drivers
+            mesa-vulkan-drivers \
+            libshaderc-dev
 
       - name: Download Goo Engine libraries
         run: make update
