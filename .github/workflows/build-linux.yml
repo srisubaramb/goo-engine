@@ -44,7 +44,6 @@ jobs:
             libglu1-mesa-dev \
             libepoxy-dev \
             libvulkan-dev \
-            libshaderc-dev \
             mesa-vulkan-drivers
 
       - name: Download Goo Engine libraries
